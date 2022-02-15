@@ -1,0 +1,8 @@
+year,tourney_name,Max
+2016,US Open,478
+2017,US Open,476
+2018,US Open,478
+2019,Wimbledon,478
+2020,Australian Open,478
+2021,Roland Garros,478
+2021,Wimbledon,478
