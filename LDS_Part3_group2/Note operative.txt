@@ -1,0 +1,8 @@
+Al fine di semplificare le query MDX, è stato deciso di sostituire i valori nulli "-1" con "NULL".
+
+La query eseguita prima della creazione del cubo è la seguente:
+
+update Match set winner_rank_points = NULL where winner_rank_points = -1
+update Match set loser_rank_points = NULL where loser_rank_points = -1
+update Match set winner_rank = NULL where winner_rank = -1
+update Match set loser_rank = NULL where loser_rank = -1

@@ -1,0 +1,6 @@
+-- Assignemnt 1: Show the total winners for each country and the grand total with respect to the continent.
+
+select [Measures].[n_distinct_winners] on columns, 
+nonempty(([Winner].[Geography].children, [Winner].[Country Code].members)) on rows
+from [Group 2 DB]
+

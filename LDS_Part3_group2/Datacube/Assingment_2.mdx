@@ -1,0 +1,22 @@
+-- Show the total winner rank points for each 
+-- year and the running yearly winner rank
+-- points for European players.
+
+
+-- itero nel mese mettendo "current member"
+with member EU_running_total as
+(
+sum( PERIODSTODATE ([Tournament].[DayMonthQuarterYear].[All].level,
+[Tournament].[DayMonthQuarterYear].currentmember),
+(([Winner].[Geography].[Continent].&[Europe],[Measures].[Winner Rank Points]))
+)
+)
+
+member European_Members as
+(([Winner].[Geography].[Continent].&[Europe],[Measures].[Winner Rank Points])
+)
+
+select {[Measures].[Winner Rank Points], European_Members, EU_running_total} on columns,
+nonempty(([Tournament].[DayMonthQuarterYear].[Year])) on rows
+from [Group 2 DB]
+

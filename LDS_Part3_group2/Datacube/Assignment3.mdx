@@ -1,0 +1,11 @@
+with member Previous_year_ratio as (
+	iif (([Tournament].[DayMonthQuarterYear].currentmember.lag(1), [Measures].[Winner Rank Points])=0, 0,
+		Round([Measures].[Winner Rank Points] / ([Tournament].[DayMonthQuarterYear].currentmember.lag(1), 
+		[Measures].[Winner Rank Points]), 4)
+	)
+)
+
+select {[Measures].[Winner Rank Points], Previous_year_ratio} on columns, 
+nonempty([Tournament].[DayMonthQuarterYear].[Year].members) on rows
+from [Group 2 DB]
+
